@@ -19,6 +19,7 @@ public class Worker : BaseComponent
 	{
 		var workerGO = GameObject.CreatePrimitive (PrimitiveType.Capsule);
 		workerGO.name = "Worker";
+
 		workerGO.renderer.material.color = Color.gray;
 		workerGO.transform.position = new Vector3(building.transform.position.x, building.transform.position.y,building.transform.position.y);
 		workerGO.AddComponent<Seeker> ();

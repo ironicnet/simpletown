@@ -7,6 +7,10 @@ using System;
 public class GameManager : BaseComponent {
 
 	public int maxWorkers = 1;
+	
+	public LayerMask BuildingLayer;
+	public LayerMask UnitLayer;
+
 
 	List<Worker> currentWorkers = new List<Worker>();
 	List<Building> buildings = new List<Building>();
@@ -101,12 +105,14 @@ public class GameManager : BaseComponent {
 								return currentWorkers.Where (w => w.GetComponent<Worker> ().Status == WorkerStatus.Free).OrderBy (w => Vector3.Distance (w.transform.position, building.transform.position)).Select (w => w.GetComponent<Worker> ()).FirstOrDefault ();
 						} else if (currentWorkers.Count < maxWorkers) { 
 								var worker = Worker.Create (GetNearestAdminBuilding (building.transform.position));
+								//worker.gameObject.layer = UnitLayer.value;
 								RegisterWorker (worker);
 								worker.WorkerType = workerType;
 								return worker;	
 						}
 				} else {
 					var worker = Worker.Create (GetNearestAdminBuilding (building.transform.position));
+					//worker.gameObject.layer = UnitLayer.value;
 					worker.name=workerType.ToString();
 					worker.WorkerType = workerType;
 			return worker;
@@ -126,6 +132,7 @@ public class GameManager : BaseComponent {
 									.FirstOrDefault();
 		} else if (currentWorkers.Count<maxWorkers){ 
 			var worker = Worker.Create (GetNearestAdminBuilding(position));
+			//worker.gameObject.layer = LayerMask.NameToLayer(UnitLayer);
 			RegisterWorker (worker);
 			return worker;	
 		}
@@ -164,8 +171,9 @@ public class GameManager : BaseComponent {
 	{
 		Building building = buildInstantiators [buildPlan.BuildType] (buildPlan.Location); //House.Create (buildPlan.Worker.transform.position);
 		Debug.Log (string.Format ("BuildType: {0}. Result: {1}. Location: {2}", buildPlan.BuildType, building, buildPlan.Location));
-		Debug.Log (buildInstantiators);
-		AstarPath.active.UpdateGraphs (building.collider.bounds);
+		
+		//building.gameObject.layer = this.BuildingLayer;
+		//AstarPath.active.UpdateGraphs (building.collider.bounds);
 		RegisterBuilding (building);
 		SendMessageTo(buildPlan.Worker.gameObject, "HideOptions");
 		activeObject = null;
@@ -192,18 +200,20 @@ public class GameManager : BaseComponent {
 			treeGO.renderer.material.color = new Color(0.63f,0.45f,0.020f);
 			treeGO.transform.position = new Vector3(pos.x, treeGO.transform.position.y+0.8f,pos.y);
 			treeGO.transform.localScale -= new Vector3 (0.6f, 0.2f, 0.6f);
-			AstarPath.active.UpdateGraphs (treeGO.collider.bounds);
 			RegisterTree (treeGO);
 		}
 	}
 
 	void RegisterTree (GameObject tree)
 	{
+		AstarPath.active.UpdateGraphs (tree.collider.bounds);
 		trees.Add (tree);
 	}
 
 	public void UnregisterTree (GameObject tree)
 	{
+		tree.SetActive (false);
+		AstarPath.active.UpdateGraphs (tree.collider.bounds);
 		trees.Remove (tree);
 	}
 }

@@ -8,7 +8,7 @@ public class AdminBuilding : Building {
 		baseGO.renderer.material.color = Color.blue;
 		baseGO.name = "Base";
 		var building = baseGO.AddComponent<AdminBuilding> ();
-		AstarPath.active.UpdateGraphs (building.collider.bounds);
+		//AstarPath.active.UpdateGraphs (building.collider.bounds);
 		return building;
 	}
 

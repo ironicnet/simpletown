@@ -51,6 +51,9 @@ public class WoodcutterHouse : Building
 				get;
 				private set;
 		}
+		protected ITask moveToTreeTask;
+		protected ITask returnToHouseTask;
+		protected ITask deliverWoodTask;
 		protected override void Update ()
 		{
 			if (IsBuilt) {
@@ -65,13 +68,12 @@ public class WoodcutterHouse : Building
 				if (targetTree != null) {
 					CurrentStep = Steps.LookingForWood;
 					increment=0;
-					woodcutter.CurrentTaskPlan.Add (new MoveToPositionTask (targetTree.transform.position));
+					moveToTreeTask = new MoveToPositionTask (targetTree.transform.position);
+					woodcutter.CurrentTaskPlan.Add (moveToTreeTask);
 				}
 				break;
 			case Steps.LookingForWood:
-				var dist = Vector3.Distance (Util.DiscardYFromPosition(targetTree.transform.position, woodcutter.transform.position.y), woodcutter.transform.position);
-				Debug.Log (dist);
-				if (dist <= 0.1f) {
+				if (moveToTreeTask.IsComplete) {
 					CurrentStep = Steps.CuttingWood;
 				}
 				break;
@@ -81,12 +83,13 @@ public class WoodcutterHouse : Building
 					gameManager.UnregisterTree(targetTree);
 					GameObject.Destroy(targetTree);
 					CurrentStep = Steps.ReturningWithWood;
-					woodcutter.CurrentTaskPlan.Add (new MoveToBuildingTask (this));
+					returnToHouseTask = new MoveToBuildingTask (this);
+					woodcutter.CurrentTaskPlan.Add (returnToHouseTask);
 				}
 				break;
 				
 			case Steps.ReturningWithWood:
-				if (Vector3.Distance (this.transform.position, woodcutter.transform.position) <= 0.1f) {
+				if (returnToHouseTask.IsComplete) {
 					CurrentStep = Steps.ProcessingWood;
 				}
 				break;
@@ -95,17 +98,19 @@ public class WoodcutterHouse : Building
 				increment++;
 				if (increment>=20) {
 					CurrentStep = Steps.DeliveringWood;
-					woodcutter.CurrentTaskPlan.Add (new MoveToPositionTask (this.transform.forward));
+					deliverWoodTask = new MoveToPositionTask (this.transform .position+ this.transform.forward);
+					woodcutter.CurrentTaskPlan.Add (deliverWoodTask);
 				}
 				break;
 			case Steps.DeliveringWood:
-				if (Vector3.Distance (this.transform.forward, woodcutter.transform.position) <= 0.1f) {
+				if (deliverWoodTask.IsComplete) {
 					CurrentStep = Steps.ReturningFromDelivery;
-					woodcutter.CurrentTaskPlan.Add (new MoveToPositionTask (this.transform.position));
+					returnToHouseTask = new MoveToPositionTask (this.transform.position);
+					woodcutter.CurrentTaskPlan.Add (returnToHouseTask);
 				}
 				break;
 			case Steps.ReturningFromDelivery:
-				if (Vector3.Distance (this.transform.position, woodcutter.transform.position) <= 0.1f) {
+				if (returnToHouseTask.IsComplete) {
 					CurrentStep = Steps.SearchingForWood;
 				}
 				break;
