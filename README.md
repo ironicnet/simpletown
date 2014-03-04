@@ -17,3 +17,7 @@ simpletown
 - Hopefully:
   - When the workers carry a material, it should be shown in the unit.
   - The buttons should be nicer :P
+
+### Bugs:
+- Somehow a cube is build at 0,0,0. It shows the progress bar, so it must be a building.
+- The units when arrives and changes the new waypoint, they slow down and accelerates again. Very annoying. This is because i'm using the Vecto3.Lerp. I should try with the CharacterController.SimpleMove.
