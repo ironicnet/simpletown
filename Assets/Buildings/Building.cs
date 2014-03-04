@@ -111,6 +111,10 @@ public class Building : BaseComponent {
 	{
 		showOptions = false;
 	}
+	public void SetAsBuilt()
+	{
+		buildProgress = 101;
+	}
 	
 	public bool IsBuilt
 	{

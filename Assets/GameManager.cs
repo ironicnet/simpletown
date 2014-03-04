@@ -68,6 +68,7 @@ public class GameManager : BaseComponent {
 	void CreateBase ()
 	{
 		Building adminBuilding = AdminBuilding.Create (new Vector3 (0, 0, 0));
+		adminBuilding.SetAsBuilt ();
 		RegisterBuilding (adminBuilding);
 		adminBuilding.OutQueue.Put("Wood", 20);
 	}
