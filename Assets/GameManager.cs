@@ -41,6 +41,7 @@ public class GameManager : BaseComponent {
 				}
 				else
 				{
+					Debug.Log (hit.transform.gameObject.layer);
 				}
 			}
 		} else if (Input.GetMouseButtonDown (1)) {
