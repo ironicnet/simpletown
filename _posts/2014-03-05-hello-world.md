@@ -3,8 +3,11 @@ layout: post
 title: Hello World
 category: Meta
 
-excerpt: Hello World! Vestibulum imperdiet adipiscing arcu, quis aliquam dolor condimentum dapibus. Aliquam fermentum leo aliquet quam volutpat et molestie mauris mattis. Suspendisse semper consequat velit in suscipit.
-
+excerpt: Hello World! This is the first post of this blog.
+# Who am I?
+I'm a developer from Argentina, trying to get started into game developing.
+#What is Simple Town?
+Simple town is meant to be a simple game to help me try and see what i can achieve with Unity.
 ---
 
 Hello World!
