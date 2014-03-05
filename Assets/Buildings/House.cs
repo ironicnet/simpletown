@@ -10,7 +10,7 @@ public class House : Building
 		var building = buildingGO.AddComponent<House> ();
 		buildingGO.transform.position = position;
 		buildingGO.name = "House";
-
+		buildingGO.renderer.material.color = Color.yellow;
 		return building;
 	}
 	public House ()

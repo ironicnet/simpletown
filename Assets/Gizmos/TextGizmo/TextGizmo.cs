@@ -1,5 +1,4 @@
-﻿#if UNITY_EDITOR
-
+﻿
 using UnityEngine;
 
 using System.Collections.Generic;
@@ -145,5 +144,3 @@ public class TextGizmo
 	}
 	
 }
-
-#endif

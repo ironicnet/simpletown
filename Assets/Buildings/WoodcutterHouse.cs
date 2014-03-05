@@ -26,6 +26,7 @@ public class WoodcutterHouse : Building
 			var building = buildingGO.AddComponent<WoodcutterHouse> ();
 			buildingGO.transform.position = position;
 			buildingGO.name = "WoodcutterHouse";
+			buildingGO.renderer.material.color = Color.green;
 
 			return building;
 		}
