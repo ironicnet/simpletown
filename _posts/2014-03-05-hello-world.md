@@ -2,15 +2,11 @@
 layout: post
 title: Hello World
 category: Meta
+excerpt: Hello World! This is the first post of this blog. Who am I? I'm a developer from Argentina, trying to get started into game developing. What is Simple Town? Simple town is meant to be a simple game to help me try and see what i can achieve with Unity.
 
-excerpt: Hello World! This is the first post of this blog.
-# Who am I?
-I'm a developer from Argentina, trying to get started into game developing.
-#What is Simple Town?
-Simple town is meant to be a simple game to help me try and see what i can achieve with Unity.
 ---
 
-Hello World!
+# Hello World!
 
 This is the first post of this blog.
 
