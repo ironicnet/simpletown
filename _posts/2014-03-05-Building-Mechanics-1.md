@@ -2,7 +2,7 @@
 layout: post
 title: Building Mechanics
 category: [mechanics, building]
-excerpt: Hello World! This is the first post of this blog. Who am I? I'm a developer from Argentina, trying to get started into game developing. What is Simple Town? Simple town is meant to be a simple game to help me try and see what i can achieve with Unity.
+excerpt: Right now the buildings are just a cube. The workers walk trought them with no problem. One of the first things that i want to change, is that the workers can't walk through them.
 
 ---
 

@@ -34,6 +34,7 @@ Whenever you build a worker will lay down the building "placeholder" and others 
 
 And that's it. I'll keep it improving.
 
+Screenshot:
 ![An ugly screenshot](http://ironicnet.github.io/simpletown/images/unity_simply_ss.png)
 
 ##Collaborating
