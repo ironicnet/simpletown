@@ -9,10 +9,11 @@ title: Home
 
         <header>
             <h2><a href="{{site.baseurl}}{{post.url}}">{{ post.title }}</a></h2>
-			<p><a href="{{site.baseurl}}{{ post.url }}#disqus_thread" class='comments'>0 Comments</a></p>
+			<p></p>
             <span class="date"><i class="icon-clock"></i><time datetime="{{post.date|date:"%F"}}">{{post.date|date:"%b %d, %Y"}}</time></span><br/>
             <span class="category"><i class="icon-tag"></i> {{ post.categories | category_links }}</span><br/>
             <span class="author"><i class="icon-user"></i> {% if post.author %}{{post.author}}{% else %}{{site.author}}{% endif%}</span>
+			<span class="comments"><i class="icon-comment"></i> <a href="{{site.baseurl}}{{ post.url }}#disqus_thread" class='comments'>0 Comments</a></span>
         </header>
 	
 		<div class="entry">{{ post.excerpt }}</div>
