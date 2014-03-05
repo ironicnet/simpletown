@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Building Mechanics
-category: mechanics, building
+category: mechanics
+tags: [mechanics, building]
 excerpt: Right now the buildings are just a cube. The workers walk trought them with no problem. One of the first things that i want to change, is that the workers can't walk through them.
 
 ---
