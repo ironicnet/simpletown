@@ -110,7 +110,7 @@ public class GameManager : BaseComponent
                 return currentWorkers.Where(w => w.GetComponent<Worker>().Status == WorkerStatus.Free).OrderBy(w => Vector3.Distance(w.transform.position, building.transform.position)).Select(w => w.GetComponent<Worker>()).FirstOrDefault();
             } else if (currentWorkers.Count < maxWorkers)
             { 
-                var worker = Worker.Create(GetNearestAdminBuilding(building.transform.position));
+                var worker = Worker.Create(GetNearestAdminBuilding(building.transform.position), workerType);
                 //worker.gameObject.layer = UnitLayer.value;
                 RegisterWorker(worker);
                 worker.WorkerType = workerType;
@@ -118,7 +118,7 @@ public class GameManager : BaseComponent
             }
         } else
         {
-            var worker = Worker.Create(GetNearestAdminBuilding(building.transform.position));
+            var worker = Worker.Create(GetNearestAdminBuilding(building.transform.position), workerType);
             //worker.gameObject.layer = UnitLayer.value;
             worker.name = workerType.ToString();
             worker.WorkerType = workerType;
@@ -142,7 +142,7 @@ public class GameManager : BaseComponent
                                     .FirstOrDefault();
         } else if (currentWorkers.Count < maxWorkers)
         { 
-            var worker = Worker.Create(GetNearestAdminBuilding(position));
+            Worker worker = Worker.Create(GetNearestAdminBuilding(position), WorkerType.Builder);
             //worker.gameObject.layer = LayerMask.NameToLayer(UnitLayer);
             RegisterWorker(worker);
             return worker;  
@@ -203,17 +203,20 @@ public class GameManager : BaseComponent
     {
         currentWorkers.Add(worker);
     }
-
+    
+    GameObject treeContainer = null;
     void CreateTrees(int radius)
     {
+        
+        treeContainer = treeContainer ?? GameObject.Find("TreeContainer");
+        if (treeContainer==null) treeContainer = new GameObject("TreeContainer");
         for (var i=0; i < 400; i++)
         {
-            Vector2 pos = new Vector2(UnityEngine.Random.Range(-radius / 2, radius / 2), UnityEngine.Random.Range(-radius / 2, radius / 2));
-            var treeGO = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            Vector3 pos = new Vector3(UnityEngine.Random.Range(-radius / 2, radius / 2),0, UnityEngine.Random.Range(-radius / 2, radius / 2));
+            
+            var treeGO = Tree.Create(pos);
             treeGO.name = "tree " + i.ToString();
-            treeGO.renderer.material.color = new Color(0.63f, 0.45f, 0.020f);
-            treeGO.transform.position = new Vector3(pos.x, treeGO.transform.position.y + 0.8f, pos.y);
-            treeGO.transform.localScale -= new Vector3(0.6f, 0.2f, 0.6f);
+            treeGO.transform.parent = treeContainer.transform;
             RegisterTree(treeGO);
         }
     }

@@ -3,13 +3,15 @@ using System.Collections;
 
 public class AdminBuilding : Building
 {
+    public static string PrefabPath = "Base";
+    public static GameObject Prefab = null;
     public static Building Create(Vector3 vector3)
     {
-        var baseGO = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        baseGO.renderer.material.color = Color.blue;
-        baseGO.name = "Base";
-        var building = baseGO.AddComponent<AdminBuilding>();
-        //AstarPath.active.UpdateGraphs (building.collider.bounds);
+        Prefab = Prefab ?? Resources.Load<GameObject>(PrefabPath);
+        GameObject buildingGO = GameObject.Instantiate(Prefab) as GameObject;
+        buildingGO.name = "Base";
+        buildingGO.transform.position = vector3;
+        var building = buildingGO.GetComponent<Building>();
         return building;
     }
 

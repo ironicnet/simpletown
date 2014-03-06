@@ -18,28 +18,39 @@ public class Worker : BaseComponent
         set;
 
     }
+    public static string PrefabPath = "Workers/";
+    public static Dictionary<WorkerType, GameObject> Prefabs = new Dictionary<WorkerType, GameObject>();
 
-    public static Worker Create(Building building)
+    public static Worker Create(Building building, WorkerType workerType)
     {
-        var workerGO = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-        workerGO.name = "Worker";
-
-        workerGO.renderer.material.color = Color.gray;
+        if (!Prefabs.ContainsKey(workerType))
+            Prefabs.Add(workerType, Resources.Load<GameObject>(PrefabPath + workerType.ToString()));
+        GameObject workerGO = GameObject.Instantiate(Prefabs[workerType]) as GameObject;
+        workerGO.name = workerType.ToString();
         workerGO.transform.position = new Vector3(building.transform.position.x, building.transform.position.y, building.transform.position.y);
-        workerGO.AddComponent<Seeker>();
-        workerGO.AddComponent<CharacterController>();
-        var worker = workerGO.AddComponent<Worker>();
-        workerGO.transform.localScale -= new Vector3(0.7f, 0.7f, 0.7f);
-        return worker;
+        return workerGO.GetComponent<Worker>();
     }
 
     private bool showOptions = false;
     public WorkerStatus Status = WorkerStatus.Free;
     GameObject baseBuilding = null;
+    private GameObject _graphics = null;
     // Use this for initialization
-    void Start()
+    protected virtual void Awake()
+    {
+    }
+    protected virtual void Start()
     {
         baseBuilding = GameObject.FindGameObjectWithTag("Base");
+    }
+
+    protected virtual GameObject Graphics
+    {
+        get{
+            if (_graphics==null)
+                _graphics = transform.FindChild("Graphics").gameObject;
+            return _graphics;
+        }
     }
 
     public float Speed = 0.05f;
@@ -110,16 +121,16 @@ public class Worker : BaseComponent
         switch (status)
         {
             case WorkerStatus.Free:
-                this.renderer.material.color = Color.gray;
+                Graphics.renderer.material.color = Color.gray;
                 break;
             case WorkerStatus.Active:
-                this.renderer.material.color = Color.yellow;
+                Graphics.renderer.material.color = Color.yellow;
                 break;
             case WorkerStatus.Travelling:
-                this.renderer.material.color = Color.green;
+                Graphics.renderer.material.color = Color.green;
                 break;
             case WorkerStatus.Working:
-                this.renderer.material.color = Color.red;
+                Graphics.renderer.material.color = Color.red;
                 break;
             default:
                 break;

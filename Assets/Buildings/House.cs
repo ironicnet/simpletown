@@ -3,15 +3,17 @@ using System.Collections;
 
 public class House : Building
 {
+    public static string PrefabPath = "House";
+    public static GameObject Prefab = null;
     public Worker owner = null;
 
     public static House Create(Vector3 position)
     {
-        GameObject buildingGO = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        var building = buildingGO.AddComponent<House>();
-        buildingGO.transform.position = position;
+        Prefab = Prefab ?? Resources.Load<GameObject>(PrefabPath);
+        GameObject buildingGO = GameObject.Instantiate(Prefab) as GameObject;
         buildingGO.name = "House";
-        buildingGO.renderer.material.color = Color.yellow;
+        buildingGO.transform.position = position;
+        var building = buildingGO.GetComponent<House>();
         return building;
     }
 
@@ -22,7 +24,7 @@ public class House : Building
 
     protected override void BuildComplete()
     {
-        owner = Worker.Create(this);
+        owner = Worker.Create(this, WorkerType.Builder);
         owner.gameObject.layer = gameManager.UnitLayer.value;
         gameManager.maxWorkers++;
         base.BuildComplete();

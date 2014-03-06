@@ -24,7 +24,6 @@ public class Building : BaseComponent
     // Use this for initialization
     protected virtual void Start()
     {
-        new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 0);
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     
@@ -55,7 +54,6 @@ public class Building : BaseComponent
         }
     
     }
-
     protected virtual void OnGUI()
     {
         if (!IsBuilt)
@@ -91,11 +89,9 @@ public class Building : BaseComponent
         if (!IsBuilt)
         {
             buildProgress += worker.BuildForce;
-            new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, buildProgress * 255 / 100);
             if (IsBuilt)
                 BuildComplete();
-        } else
-            new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 255);
+        }
 
     }
     
