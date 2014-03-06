@@ -1,8 +1,8 @@
 
 public enum WorkerStatus
 {
-	Free,
-	Active,
-	Travelling,
-	Working
+    Free,
+    Active,
+    Travelling,
+    Working
 }

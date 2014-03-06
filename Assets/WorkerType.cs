@@ -1,6 +1,6 @@
 
 public enum WorkerType
 {
-	Builder,
-	Woodcutter
+    Builder,
+    Woodcutter
 }
