@@ -20,6 +20,7 @@ public class CameraControl : MonoBehaviour
         {
             
             Camera.main.orthographicSize = Mathf.Max(Camera.main.orthographicSize + axis, 1f);
+            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Mathf.Max(Camera.main.orthographicSize + axis, 1f), Camera.main.transform.position.z);
         }
         if (Input.GetMouseButton(2))
         {
@@ -27,7 +28,7 @@ public class CameraControl : MonoBehaviour
             var zAxis = Input.GetAxis(zAxisName);
             if (xAxis != 0 || zAxis != 0)
             {
-                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + xAxis, Camera.main.transform.position.y, Camera.main.transform.position.z + zAxis);
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + xAxis, Camera.main.transform.position.y , Camera.main.transform.position.z + zAxis);
             }
         }
     }
