@@ -1,13 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\GameManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CameraControl.cs">
     <Files>
-      <File FileName="Assets\Buildings\Building.cs" Line="95" Column="1" />
+      <File FileName="Assets\Buildings\Building.cs" Line="92" Column="25" />
       <File FileName="Assets\Buildings\AdminBuilding.cs" Line="9" Column="6" />
-      <File FileName="Assets\Buildings\House.cs" Line="9" Column="1" />
+      <File FileName="Assets\Buildings\House.cs" Line="28" Column="11" />
       <File FileName="Assets\Buildings\WoodcutterHouse.cs" Line="43" Column="35" />
-      <File FileName="Assets\GameManager.cs" Line="218" Column="62" />
-      <File FileName="Assets\Buildings\Tree.cs" Line="13" Column="27" />
+      <File FileName="Assets\GameManager.cs" Line="145" Column="96" />
+      <File FileName="Assets\Buildings\Tree.cs" Line="7" Column="44" />
+      <File FileName="Assets\Worker.cs" Line="28" Column="64" />
+      <File FileName="Assets\BaseComponent.cs" Line="20" Column="20" />
+      <File FileName="Assets\Tasks\MoveToPositionTask.cs" Line="67" Column="24" />
+      <File FileName="Assets\CameraControl.cs" Line="2" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
