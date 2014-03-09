@@ -13,6 +13,17 @@ public class Building : BaseComponent
     public Queue OutQueue = new Queue();
     protected List<KeyValuePair<string, ResourceAmount>> Requests = new List<KeyValuePair<string, ResourceAmount>>();
 
+    protected GameObject _waypoint = null;
+    
+    public virtual GameObject Waypoint
+    {
+        get{
+            if (_waypoint==null)
+                _waypoint = transform.FindChild("Waypoint").gameObject;
+            return _waypoint;
+        }
+    }
+
     public virtual bool IsAdmin
     {
         get

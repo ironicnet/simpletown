@@ -65,9 +65,13 @@ public class WoodcutterHouse : Building
             switch (CurrentStep)
             {
                 case Steps.Unoccupied:
-                    if (Vector3.Distance(this.transform.position, woodcutter.transform.position) <= 0.1f)
+                    if (woodcutter.Destination==this.Waypoint.transform.position && woodcutter.DestinationArrived)
                     {
                         CurrentStep = Steps.SearchingForWood;
+                    }
+                    else if (woodcutter.Destination!=this.Waypoint.transform.position)
+                    {
+                        woodcutter.Destination =this.Waypoint.transform.position;
                     }
                     break;
                 case Steps.SearchingForWood:
@@ -110,7 +114,7 @@ public class WoodcutterHouse : Building
                     if (increment >= 20)
                     {
                         CurrentStep = Steps.DeliveringWood;
-                        deliverWoodTask = new MoveToPositionTask(this.transform .position + this.transform.forward);
+                        deliverWoodTask = new MoveToPositionTask(this.Waypoint.transform.position);
                         woodcutter.CurrentTaskPlan.Add(deliverWoodTask);
                     }
                     break;

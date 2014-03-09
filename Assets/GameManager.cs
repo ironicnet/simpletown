@@ -45,7 +45,7 @@ public class GameManager : BaseComponent
                     SendWorkerTo(position);
                 } else
                 {
-                    Debug.Log(hit.transform.gameObject.layer);
+                    Debug.Log(string.Format("Layer: {0}", hit.transform.gameObject.layer));
                 }
             }
         } else if (Input.GetMouseButtonDown(1))
@@ -107,11 +107,10 @@ public class GameManager : BaseComponent
         {
             if (isWorkerAvailable())
             {
-                return currentWorkers.Where(w => w.GetComponent<Worker>().Status == WorkerStatus.Free).OrderBy(w => Vector3.Distance(w.transform.position, building.transform.position)).Select(w => w.GetComponent<Worker>()).FirstOrDefault();
+                return currentWorkers.Where(w => w.GetComponent<Worker>().Status == WorkerStatus.Free).OrderBy(w => Vector3.Distance(w.transform.position, building.Waypoint.transform.position)).Select(w => w.GetComponent<Worker>()).FirstOrDefault();
             } else if (currentWorkers.Count < maxWorkers)
             { 
                 var worker = Worker.Create(GetNearestAdminBuilding(building.transform.position), workerType);
-                //worker.gameObject.layer = UnitLayer.value;
                 RegisterWorker(worker);
                 worker.WorkerType = workerType;
                 return worker;  
@@ -119,7 +118,6 @@ public class GameManager : BaseComponent
         } else
         {
             var worker = Worker.Create(GetNearestAdminBuilding(building.transform.position), workerType);
-            //worker.gameObject.layer = UnitLayer.value;
             worker.name = workerType.ToString();
             worker.WorkerType = workerType;
             return worker;
@@ -172,7 +170,7 @@ public class GameManager : BaseComponent
             {
                 Debug.Log(string.Format("Transporting to {0} requested {1} of {2}", building.name, amountRequired, resourceName));
                 transportWorker.CurrentTaskPlan.Add(new PickupResourceTask(storageBuilding, building, resourceName, amountRequested));
-                transportWorker.CurrentTaskPlan.Add(new MoveToPositionTask(transportWorker.transform.position));
+                //transportWorker.CurrentTaskPlan.Add(new MoveToBuildingTask(storageBuilding));
                 amountRequired -= amountRequested;
             }
         }

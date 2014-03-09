@@ -1,0 +1,475 @@
+fileFormatVersion: 2
+guid: d29c6267678824040b8628b1d97a3b74
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: arm_l
+    100002: arm_l_001
+    100004: Armature
+    100006: Camera
+    100008: chest
+    100010: //RootNode
+    100012: Cylinder
+    100014: fingers_l
+    100016: fingers_r
+    100018: foot_l
+    100020: foot_r
+    100022: hand_l
+    100024: hand_l_001
+    100026: head
+    100028: hip
+    100030: Lamp
+    100032: leg_l
+    100034: leg_r
+    100036: neck
+    100038: shoulder_l
+    100040: shoulder_l_001
+    100042: stomach
+    100044: thumb_l
+    100046: thumb_r
+    100048: toe_l
+    100050: toe_r
+    100052: upperarm_l
+    100054: upperarm_r
+    100056: upperleg_l
+    100058: upperleg_l_001
+    100060: holder_l
+    100062: Empty
+    400000: arm_l
+    400002: arm_l_001
+    400004: Armature
+    400006: Camera
+    400008: chest
+    400010: //RootNode
+    400012: Cylinder
+    400014: fingers_l
+    400016: fingers_r
+    400018: foot_l
+    400020: foot_r
+    400022: hand_l
+    400024: hand_l_001
+    400026: head
+    400028: hip
+    400030: Lamp
+    400032: leg_l
+    400034: leg_r
+    400036: neck
+    400038: shoulder_l
+    400040: shoulder_l_001
+    400042: stomach
+    400044: thumb_l
+    400046: thumb_r
+    400048: toe_l
+    400050: toe_r
+    400052: upperarm_l
+    400054: upperarm_r
+    400056: upperleg_l
+    400058: upperleg_l_001
+    400060: holder_l
+    400062: Empty
+    4300000: Cylinder
+    7400000: Default Take
+    7400002: chop
+    7400004: idle_0
+    7400006: walk
+    7400008: walk_carry
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Cylinder
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 2
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: chop
+      takeName: chop
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hip
+        weight: 1
+      - path: Armature/hip/stomach
+        weight: 1
+      - path: Armature/hip/stomach/chest
+        weight: 1
+      - path: Armature/hip/stomach/chest/neck
+        weight: 1
+      - path: Armature/hip/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l/hand_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l/hand_l/fingers_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l/thumb_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001/hand_l_001
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001/hand_l_001/fingers_r
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001/thumb_r
+        weight: 1
+      - path: Armature/hip/upperleg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/leg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/leg_l/foot_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/leg_l/foot_l/toe_l
+        weight: 1
+      - path: Armature/hip/upperleg_l_001
+        weight: 1
+      - path: Armature/hip/upperleg_l_001/leg_r
+        weight: 1
+      - path: Armature/hip/upperleg_l_001/leg_r/foot_r
+        weight: 1
+      - path: Armature/hip/upperleg_l_001/leg_r/foot_r/toe_r
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Lamp
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: idle_0
+      takeName: idle_0
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 4
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hip
+        weight: 1
+      - path: Armature/hip/stomach
+        weight: 1
+      - path: Armature/hip/stomach/chest
+        weight: 1
+      - path: Armature/hip/stomach/chest/neck
+        weight: 1
+      - path: Armature/hip/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l/hand_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l/hand_l/fingers_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l/thumb_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001/hand_l_001
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001/hand_l_001/fingers_r
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001/thumb_r
+        weight: 1
+      - path: Armature/hip/upperleg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/leg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/leg_l/foot_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/leg_l/foot_l/toe_l
+        weight: 1
+      - path: Armature/hip/upperleg_l_001
+        weight: 1
+      - path: Armature/hip/upperleg_l_001/leg_r
+        weight: 1
+      - path: Armature/hip/upperleg_l_001/leg_r/foot_r
+        weight: 1
+      - path: Armature/hip/upperleg_l_001/leg_r/foot_r/toe_r
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Lamp
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: walk
+      takeName: walk
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hip
+        weight: 1
+      - path: Armature/hip/stomach
+        weight: 1
+      - path: Armature/hip/stomach/chest
+        weight: 1
+      - path: Armature/hip/stomach/chest/neck
+        weight: 1
+      - path: Armature/hip/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l/hand_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l/hand_l/fingers_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l/thumb_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001/hand_l_001
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001/hand_l_001/fingers_r
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001/thumb_r
+        weight: 1
+      - path: Armature/hip/upperleg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/leg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/leg_l/foot_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/leg_l/foot_l/toe_l
+        weight: 1
+      - path: Armature/hip/upperleg_l_001
+        weight: 1
+      - path: Armature/hip/upperleg_l_001/leg_r
+        weight: 1
+      - path: Armature/hip/upperleg_l_001/leg_r/foot_r
+        weight: 1
+      - path: Armature/hip/upperleg_l_001/leg_r/foot_r/toe_r
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Lamp
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: walk_carry
+      takeName: walk_carry
+      firstFrame: 0
+      lastFrame: 43
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hip
+        weight: 1
+      - path: Armature/hip/stomach
+        weight: 1
+      - path: Armature/hip/stomach/chest
+        weight: 1
+      - path: Armature/hip/stomach/chest/neck
+        weight: 1
+      - path: Armature/hip/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l/hand_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l/hand_l/fingers_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l/upperarm_l/arm_l/thumb_l
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001/hand_l_001
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001/hand_l_001/fingers_r
+        weight: 1
+      - path: Armature/hip/stomach/chest/shoulder_l_001/upperarm_r/arm_l_001/thumb_r
+        weight: 1
+      - path: Armature/hip/upperleg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/leg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/leg_l/foot_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/leg_l/foot_l/toe_l
+        weight: 1
+      - path: Armature/hip/upperleg_l_001
+        weight: 1
+      - path: Armature/hip/upperleg_l_001/leg_r
+        weight: 1
+      - path: Armature/hip/upperleg_l_001/leg_r/foot_r
+        weight: 1
+      - path: Armature/hip/upperleg_l_001/leg_r/foot_r/toe_r
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Lamp
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .100000001
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
