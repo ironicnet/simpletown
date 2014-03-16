@@ -40,7 +40,8 @@ public class WoodcutterHouse : Building
     {
         woodcutter = gameManager.RequestWorker(this, WorkerType.Woodcutter);
         woodcutter.WorkingBuilding = this;
-        woodcutter.CurrentTaskPlan.Add(new MoveToBuildingTask(this));
+        occupyHouseTask = new MoveToBuildingTask(this);
+        woodcutter.CurrentTaskPlan.Add(occupyHouseTask);
         base.BuildComplete();
     }
 
@@ -54,6 +55,7 @@ public class WoodcutterHouse : Building
         private set;
     }
 
+    protected ITask occupyHouseTask;
     protected ITask moveToTreeTask;
     protected ITask returnToHouseTask;
     protected ITask deliverWoodTask;
@@ -65,13 +67,10 @@ public class WoodcutterHouse : Building
             switch (CurrentStep)
             {
                 case Steps.Unoccupied:
-                    if (woodcutter.Destination==this.Waypoint.transform.position && woodcutter.DestinationArrived)
+                    Debug.Log(string.Format("Waiting for the woodcutter to occupy the house: {0}", occupyHouseTask.IsComplete));
+                    if (occupyHouseTask.IsComplete)
                     {
                         CurrentStep = Steps.SearchingForWood;
-                    }
-                    else if (woodcutter.Destination!=this.Waypoint.transform.position)
-                    {
-                        woodcutter.Destination =this.Waypoint.transform.position;
                     }
                     break;
                 case Steps.SearchingForWood:
