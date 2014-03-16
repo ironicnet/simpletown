@@ -24,7 +24,7 @@ public class House : Building
 
     protected override void BuildComplete()
     {
-        owner = Worker.Create(this, WorkerType.Builder);
+        owner = Worker.Create(gameManager, this, WorkerType.Builder);
         //owner.gameObject.layer = gameManager.UnitLayer.value;
         gameManager.maxWorkers++;
         base.BuildComplete();

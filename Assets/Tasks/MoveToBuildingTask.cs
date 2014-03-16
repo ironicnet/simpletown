@@ -43,7 +43,7 @@ public class MoveToBuildingTask : ITask
 
     public void Execute(Worker worker)
     {
-        worker.SetStatus(WorkerStatus.Travelling);
+        worker.SetStatus(WorkerStatus.Travelling, "Moving to building #" + Destination.ID.ToString());
         Debug.Log(String.Format("Pos: {0}. LPos: {1}", Destination.Waypoint.transform.position,Destination.Waypoint.transform.localPosition));
         if (worker.Destination != Destination.Waypoint.transform.position)
             worker.Destination = Destination.Waypoint.transform.position;

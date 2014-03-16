@@ -64,28 +64,36 @@ public class PickupResourceTask : ITask
         {
             if (!ArrivedStorage)
             {
+                Debug.Log(string.Format("W #{0} not arrived yet", worker.ID));
                 moveToSourceTask.Execute(worker);
             } else if (ArrivedStorage && !ResourcePickedUp)
             {
-                worker.SetStatus(WorkerStatus.Working);
+                Debug.Log(string.Format("W #{0} arrived to storage, didn't pick the resource yet", worker.ID));
+                worker.SetStatus(WorkerStatus.Working, "Picking resource");
                 if (moveToSourceTask.EvaluateCompletion(worker))
                 {
+
                     var queue = FromSourceBuilding.OutQueue;
                     queue.Pull(ResourceName, AmountRequested);
                     ResourcePickedUp = true;
                     CarryingResouce = true;
+                    Debug.Log(string.Format("W #{0} arrived to storage, and picked the resource.", worker.ID));
                 }
             } else if (ArrivedStorage && CarryingResouce && !ArrivedDestination)
             {   
+                Debug.Log(string.Format("W #{0} arrived to storage, and picked the resource. Going to the target building", worker.ID));
                 moveToTargetTask.Execute(worker);
             } else if (ArrivedStorage && CarryingResouce && ArrivedDestination)
             {   
-                worker.SetStatus(WorkerStatus.Working);
+                Debug.Log(string.Format("W #{0} arrived to storage, and picked the resource. Waiting for arrival to the target building", worker.ID));
+                worker.SetStatus(WorkerStatus.Working, "Dropping resource");
                 if (moveToTargetTask.EvaluateCompletion(worker))
                 {
+
                     ToTargetBuilding.InQueue.Put(ResourceName, AmountRequested);
                     ResourceDelivered = true;
                     CarryingResouce = false;
+                    Debug.Log(string.Format("W #{0} arrived to storage, and picked the resource. Arrived to the target building and dropping the resource", worker.ID));
                 }
             }
         }
@@ -111,14 +119,14 @@ public class PickupResourceTask : ITask
         if (!ArrivedStorage)
         {
             TextGizmo.Instance.DrawText(Camera.main, gizmoPosition, "Going to the storage");
-            Gizmos.DrawLine(worker.transform.position, FromSourceBuilding.transform.position);
+            Gizmos.DrawLine(worker.transform.position, FromSourceBuilding.Waypoint.transform.position);
         } else if (ArrivedStorage && !ResourcePickedUp)
         {
             TextGizmo.Instance.DrawText(Camera.main, gizmoPosition, string.Format("Picking up {0} of {1}", AmountRequested, ResourceName));
         } else if (ArrivedStorage && CarryingResouce && !ArrivedDestination)
         {   
             TextGizmo.Instance.DrawText(Camera.main, gizmoPosition, string.Format("Delivering {0} of {1}", AmountRequested, ResourceName));
-            Gizmos.DrawLine(worker.transform.position, ToTargetBuilding.transform.position);
+            Gizmos.DrawLine(worker.transform.position, ToTargetBuilding.Waypoint.transform.position);
         } else if (ArrivedStorage && CarryingResouce && ArrivedDestination)
         {   
             TextGizmo.Instance.DrawText(Camera.main, gizmoPosition, "Done!");

@@ -48,7 +48,7 @@ public class MoveToPositionTask : ITask
 
     public void Execute(Worker worker)
     {
-        worker.SetStatus(WorkerStatus.Travelling);
+        worker.SetStatus(WorkerStatus.Travelling, "Moving to position");
         if (worker.Destination != Destination)
         worker.Destination = Destination;
     }

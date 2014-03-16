@@ -6,7 +6,6 @@ using System;
 
 public class GameManager : BaseComponent
 {
-
     public int maxWorkers = 1;
     public LayerMask BuildingLayer;
     public LayerMask UnitLayer;
@@ -25,7 +24,7 @@ public class GameManager : BaseComponent
     {
         this.GetComponent<MeshRenderer>().enabled = false;
         this.GetComponent<MeshFilter>().mesh = null;
-        CreateTrees(50);
+        CreateTrees(500,400);
         CreateBase();
     }
     
@@ -101,6 +100,12 @@ public class GameManager : BaseComponent
         return currentWorkers.First(w => w.Status == WorkerStatus.Free);
     }
 
+    public int LastID
+    {
+        get;
+        set;
+    }
+
     public Worker RequestWorker(Building building, WorkerType workerType = WorkerType.Builder)
     {
         if (workerType == WorkerType.Builder)
@@ -110,14 +115,14 @@ public class GameManager : BaseComponent
                 return currentWorkers.Where(w => w.GetComponent<Worker>().Status == WorkerStatus.Free).OrderBy(w => Vector3.Distance(w.transform.position, building.Waypoint.transform.position)).Select(w => w.GetComponent<Worker>()).FirstOrDefault();
             } else if (currentWorkers.Count < maxWorkers)
             { 
-                var worker = Worker.Create(GetNearestAdminBuilding(building.transform.position), workerType);
+                var worker = Worker.Create(this, GetNearestAdminBuilding(building.transform.position), workerType);
                 RegisterWorker(worker);
                 worker.WorkerType = workerType;
                 return worker;  
             }
         } else
         {
-            var worker = Worker.Create(GetNearestAdminBuilding(building.transform.position), workerType);
+            var worker = Worker.Create(this, GetNearestAdminBuilding(building.transform.position), workerType);
             worker.name = workerType.ToString();
             worker.WorkerType = workerType;
             return worker;
@@ -140,7 +145,7 @@ public class GameManager : BaseComponent
                                     .FirstOrDefault();
         } else if (currentWorkers.Count < maxWorkers)
         { 
-            Worker worker = Worker.Create(GetNearestAdminBuilding(position), WorkerType.Builder);
+            Worker worker = Worker.Create(this, GetNearestAdminBuilding(position), WorkerType.Builder);
             //worker.gameObject.layer = LayerMask.NameToLayer(UnitLayer);
             RegisterWorker(worker);
             return worker;  
@@ -185,7 +190,6 @@ public class GameManager : BaseComponent
         Debug.Log(string.Format("BuildType: {0}. Result: {1}. Location: {2}", buildPlan.BuildType, building, buildPlan.Location));
         
         //building.gameObject.layer = this.BuildingLayer;
-        //AstarPath.active.UpdateGraphs (building.collider.bounds);
         RegisterBuilding(building);
         SendMessageTo(buildPlan.Worker.gameObject, "HideOptions");
         activeObject = null;
@@ -194,6 +198,7 @@ public class GameManager : BaseComponent
 
     public void RegisterBuilding(Building building)
     {
+        AstarPath.active.UpdateGraphs (building.Graphics.collider.bounds);
         buildings.Add(building);
     }
 
@@ -202,19 +207,21 @@ public class GameManager : BaseComponent
         currentWorkers.Add(worker);
     }
     
-    GameObject treeContainer = null;
-    void CreateTrees(int radius)
+    public GameObject treeContainer = null;
+    void CreateTrees(int radius, int amount)
     {
         
         treeContainer = treeContainer ?? GameObject.Find("TreeContainer");
         if (treeContainer==null) treeContainer = new GameObject("TreeContainer");
-        for (var i=0; i < 400; i++)
+        for (var i=0; i < amount; i++)
         {
             Vector3 pos = new Vector3(UnityEngine.Random.Range(-radius / 2, radius / 2),0, UnityEngine.Random.Range(-radius / 2, radius / 2));
             
             var treeGO = Tree.Create(pos);
+            treeGO.layer = treeContainer.layer;
             treeGO.name = "tree " + i.ToString();
             treeGO.transform.parent = treeContainer.transform;
+            
             RegisterTree(treeGO);
         }
     }

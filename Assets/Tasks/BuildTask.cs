@@ -44,7 +44,7 @@ public class BuildTask : ITask
     
     public void Execute(Worker worker)
     {
-        worker.SetStatus(WorkerStatus.Working);
+        worker.SetStatus(WorkerStatus.Working, "Building...");
         var building = Building.GetComponent<Building>();
         if (building.RequirementsMet)
             building.AddBuildForce(worker);

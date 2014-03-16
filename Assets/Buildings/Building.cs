@@ -7,7 +7,8 @@ public class Building : BaseComponent
 {
     protected float buildProgress = 0f;
     private bool showOptions = false;
-    protected GameManager gameManager;
+    public int ID;
+    protected GameManager _gameManager;
     protected Dictionary<string, ResourceAmount> Requirements = new Dictionary<string, ResourceAmount>();
     public Queue InQueue = new Queue();
     public Queue OutQueue = new Queue();
@@ -23,6 +24,24 @@ public class Building : BaseComponent
             return _waypoint;
         }
     }
+    protected GameObject _graphics = null;
+    public virtual GameObject Graphics
+    {
+        get{
+            if (_graphics==null)
+                _graphics = transform.FindChild("Graphics").gameObject;
+            return _graphics;
+        }
+    }
+    protected GameManager _gm = null;
+    protected virtual GameManager gameManager
+    {
+        get{
+            if (_gm==null)
+                _gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+            return _gm;
+        }
+    }
 
     public virtual bool IsAdmin
     {
@@ -31,11 +50,16 @@ public class Building : BaseComponent
             return false;
         }
     }
-
+    
+    // Use this for initialization
+    protected virtual void Awake()
+    {
+        this.ID = gameManager.LastID++;
+    }
     // Use this for initialization
     protected virtual void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        this.name = this.name + " " + this.ID;
     }
     
     // Update is called once per frame
